@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Map Generator</title>
+	<script src="d3.min.js"></script>
+	<script src="priority-queue.min.js"></script>
+	<script src="language.js"></script>
+	<script type='text/javascript' src='terrain.js'></script>
+	
+	<style>
+		body {
+			background-color: #fcfaf4;
+			margin: 0;
+			padding: 0;
+		}
+		
+		path, line {
+			fill: none;
+			stroke: black;
+			stroke-linecap: round;
+		}
+
+		.field {
+			stroke: none;
+			fill-opacity: 1.0;
+		}
+
+		.slope {
+			stroke-width: 1;
+			stroke: #617d5e;
+		}
+
+		.river {
+			stroke-width: 2;
+			stroke: #476093;
+		}
+
+		.coast {
+			stroke-width: 4;
+		}
+
+		.border {
+			stroke-width: 5;
+			stroke-dasharray: 4,4;
+			stroke-linecap: butt;
+			stroke: #aaa;
+		}
+
+		text {
+			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+			color: black;
+			stroke: white;
+			stroke-width: 5;
+			stroke-linejoin: round;
+			paint-order: stroke;
+		}
+
+		text.region {
+			stroke-width:10;
+			font-variant: small-caps;
+		}
+
+		svg {
+			background-color: #fcfaf4;
+		}
+	</style>
+</head>
+<body>
+	<svg id="map" width="700" height="700"></svg>
+	
+	<script>
+		var size = document.body.clientWidth < document.body.clientHeight ? document.body.clientWidth : document.body.ClientHeight;
+		document.getElementById('map').setAttribute("width", size);
+		document.getElementById('map').setAttribute("height", size);
+		var mapObject = d3.select("#map");
+		doMap(mapObject, defaultParams);
+	</script>
+</body>
+</html>

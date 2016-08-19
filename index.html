@@ -73,6 +73,12 @@
 		document.getElementById('map').setAttribute("height", size);
 		var mapObject = d3.select("#map");
 		doMap(mapObject, defaultParams);
+		
+		if (location.search.indexOf("slideshow=true") > -1) {
+			setInterval(function() {
+				doMap(mapObject, defaultParams);
+			}, 10000);
+		}
 	</script>
 </body>
 </html>
